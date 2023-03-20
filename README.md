@@ -1,8 +1,7 @@
 # DSP of NR Test Model Signal Generator 
 ## Summary of simulation
-  - Summary_PA vs DPD.md
-  - Summary_DPD coefs. applied vs Waveform.md
-  - Summary_DPD coefs. applied vs PA.md
+<img src="https://user-images.githubusercontent.com/87049112/226227322-193bd0cb-974c-423a-a995-c5f428c9c972.png" width="50%">
+
 
 ## Main: NRTestModelWaveformGeneration_main_k
   - NR-TM or PDSCH FRC waveform parameters
@@ -29,16 +28,33 @@
   fnco = [-200e6, 200e6]
   ```
   - CFR
+    * channnel filter and decimation process ratio
   ```js
+  ratio = 2 % decimation process ratio
   cfrdB = 8.5 % input
   ```
+  <img src="https://user-images.githubusercontent.com/87049112/226224674-78855fec-e69f-4b21-8f47-a34e411a6eb8.png" width="50%">
+  <img src="https://user-images.githubusercontent.com/87049112/226225097-4d9082b6-7e21-4b98-a347-c80943fef511.png" width="50%">
+
   - Assign target power
   ```js
   flag_def_fullscale = 'dBfs'
   pwrdB_target = -15 % input
   ```
-  
-  
+  - Demodulation and EVM
+    * nco
+    * evm3GPP
+    ```js
+    cfg = struct();
+    cfg.Evm3GPP = evm3GPP;
+    cfg.TargetRNTIs = targetRNTIs;
+    cfg.PlotEVM = plotEVM;
+    cfg.DisplayEVM = displayEVM;
+    cfg.Label = dlrefwavegen.ConfiguredModel{1};
+    ```
+  <img src="https://user-images.githubusercontent.com/87049112/226225751-2ed9c827-99ce-49b2-9ce3-8838ca60f465.png" width="50%">
+
+
   
   
   
